@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
     bucket = "pact-terraform-test"
-    key    = "${var.bucket_name}.tfstate"
-    region = var.aws_region
+    key    = "pact-s3-buckets.tfstate"
+    region = "us-west-2"
   }
 }
 
