@@ -1,2 +1,2 @@
 
-bucket_name = "pact-dev"
+bucket_name = "pact-sutantra-dev"
