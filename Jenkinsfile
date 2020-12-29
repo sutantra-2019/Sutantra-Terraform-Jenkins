@@ -11,6 +11,7 @@ pipeline{
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
+        sh "terraform apply -var-file=dev.tfvars -auto-approve"
       }
     }
     stage('terraform execution for QA Environment'){
@@ -20,6 +21,7 @@ pipeline{
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
+        sh "terraform apply -var-file=qa.tfvars -auto-approve"
       }
     }
     stage('terraform execution for Staging Environment'){
@@ -29,6 +31,7 @@ pipeline{
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
+        sh "terraform apply -var-file=staging.tfvars -auto-approve"
       }
     }
   }

@@ -7,9 +7,8 @@ variable "aws_profile" {
   default = "default"
 }
 
-variable "base_name" {
+variable "bucket_name" {
   description = "string used to base various names on"
-  default     = "pact-terraform-1"
 }
 
 variable "s3_object_versioning" {

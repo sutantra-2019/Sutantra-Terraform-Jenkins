@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "Terraform-Bucket" {
-  bucket = var.base_name
+  bucket = var.bucket_name
   acl    = "private"
   tags   = var.tags
 
