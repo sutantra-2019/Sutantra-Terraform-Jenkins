@@ -6,6 +6,7 @@ pipeline{
   stages{
     stage('terraform execution for DEV Environment'){
       steps{
+        sh "rm -fR *terraform*"
         sh "terraform init -reconfigure -backend=true -force-copy"
         sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform fmt"
