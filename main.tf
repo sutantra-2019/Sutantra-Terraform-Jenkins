@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "pact-terraform-test"
+    key    = "${var.bucket_name}.tfstate"
+    region = var.aws_region
+  }
+}
+
 # ----------------------------------------------------------------------------------------
 # S3 Bucket To Store The Terraform State Files
 # ----------------------------------------------------------------------------------------
@@ -12,14 +20,4 @@ resource "aws_s3_bucket" "Terraform-Bucket" {
   }
 
   force_destroy = var.force_destroy
-  /*
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        kms_master_key_id = aws_kms_key.Key-Terraform-S3Bucket.arn
-        sse_algorithm     = "aws:kms"
-      }
-    }
-  }
-  */
 }
