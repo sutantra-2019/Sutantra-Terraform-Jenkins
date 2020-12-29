@@ -7,8 +7,8 @@ pipeline{
     stage('terraform execution for DEV Environment'){
       steps{
         sh "rm -fR *terraform*"
-        sh "terraform init -reconfigure -backend=true -force-copy"
         sh returnStatus: true, script: 'terraform workspace new dev'
+        sh "terraform init -reconfigure -backend=true -force-copy"
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
@@ -17,8 +17,8 @@ pipeline{
     }
     stage('terraform execution for QA Environment'){
       steps{
-        sh "terraform init -reconfigure -backend=true -force-copy"
         sh returnStatus: true, script: 'terraform workspace new qa'
+        sh "terraform init -reconfigure -backend=true -force-copy"
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
@@ -27,8 +27,8 @@ pipeline{
     }
     stage('terraform execution for Staging Environment'){
       steps{
+        sh returnStatus: true, script: 'terraform workspace new staging'      
         sh "terraform init -reconfigure -backend=true -force-copy"
-        sh returnStatus: true, script: 'terraform workspace new staging'
         sh "terraform fmt"
         sh "terraform validate"
         sh "terraform plan"
