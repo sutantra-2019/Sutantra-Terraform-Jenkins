@@ -10,7 +10,9 @@ pipeline{
       }
     }
     stage('Approve To Deploy Into Dev Environment'){
-      input "Deploy To Dev"
+      steps{
+        input "Deploy To Dev"
+      }
     }
     stage('terraform execution for DEV Environment'){
       steps{
@@ -23,7 +25,9 @@ pipeline{
       }
     }
     stage('Approve To Deploy Into QA Environment'){
-      input "Deploy To QA"
+      steps{
+        input "Deploy To QA"
+      }
     }
     stage('terraform execution for QA Environment'){
       steps{
@@ -36,7 +40,9 @@ pipeline{
       }
     }
     stage('Approve To Deploy Into Staging Environment'){
-      input "Deploy To Staging"
+      steps{
+        input "Deploy To Staging"
+      }
     }
     stage('terraform execution for Staging Environment'){
       steps{
