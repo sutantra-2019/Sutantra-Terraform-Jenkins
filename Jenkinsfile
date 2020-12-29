@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage('terraform execution for DEV Environment'){
       steps{
-        sh "returnStatus: true, script: 'terraform workspace new dev'"
+        sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform init"
         sh "terraform fmt"
         sh "terraform validate"
@@ -15,7 +15,7 @@ pipeline{
     }
     stage('terraform execution for QA Environment'){
       steps{
-        sh "returnStatus: true, script: 'terraform workspace new qa'"
+        sh returnStatus: true, script: 'terraform workspace new qa'
         sh "terraform init"
         sh "terraform fmt"
         sh "terraform validate"
@@ -24,7 +24,7 @@ pipeline{
     }
     stage('terraform execution for Staging Environment'){
       steps{
-        sh "returnStatus: true, script: 'terraform workspace new staging'"
+        sh returnStatus: true, script: 'terraform workspace new staging'
         sh "terraform init"
         sh "terraform fmt"
         sh "terraform validate"
