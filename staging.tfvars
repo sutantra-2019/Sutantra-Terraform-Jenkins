@@ -1,3 +1,3 @@
 
 
-bucket_name = "pact-staging"
+bucket_name = "pact-sutantra-staging"
