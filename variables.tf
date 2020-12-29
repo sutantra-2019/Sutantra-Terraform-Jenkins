@@ -45,6 +45,30 @@ variable "kms_enabled" {
   description = "key is enabled"
 }
 
+variable "block_public_acls" {
+  type        = bool
+  default     = true
+  description = "Block Public ACL's"
+}
+
+variable "block_public_policy" {
+  type        = bool
+  default     = true
+  description = "Block Public Policy"
+}
+
+variable "ignore_public_acls" {
+  type        = bool
+  default     = true
+  description = "Ignore Public ACL's"
+}
+
+variable "restrict_public_buckets" {
+  type        = bool
+  default     = true
+  description = "Restrict Public Buckets"
+}
+
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
