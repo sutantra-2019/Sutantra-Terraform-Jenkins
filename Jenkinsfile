@@ -9,13 +9,6 @@ pipeline{
         sh "rm -fR *terraform*"
       }
     }
-    stage('Terraform Initiation - Format - Validate'){
-      steps{
-        sh "terraform init"
-        sh "terraform fmt"
-        sh "terraform validate"
-      }
-    }
     stage('Approve To Deploy Into Dev Environment'){
       steps{
         input "Deploy To Dev"
@@ -25,6 +18,7 @@ pipeline{
       steps{
         sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform workspace select dev"
+        sh "terraform init"
         sh "terraform plan -var-file=dev.tfvars"
         sh "terraform apply -var-file=dev.tfvars -auto-approve"
       }
@@ -38,6 +32,7 @@ pipeline{
       steps{
         sh returnStatus: true, script: 'terraform workspace new qa'
         sh "terraform workspace select qa"
+        sh "terraform init"
         sh "terraform plan -var-file=qa.tfvars"
         sh "terraform apply -var-file=qa.tfvars -auto-approve"
       }
@@ -51,6 +46,7 @@ pipeline{
       steps{
         sh returnStatus: true, script: 'terraform workspace new staging'
         sh "terraform workspace select staging"
+        sh "terraform init"
         sh "terraform plan -var-file=staging.tfvars"
         sh "terraform apply -var-file=staging.tfvars -auto-approve"
       }
