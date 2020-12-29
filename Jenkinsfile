@@ -4,9 +4,31 @@ pipeline{
     PATH = "${PATH}:${getTerraformPath()}"
   }
   stages{
-    stage('terraform init'){
+    stage('terraform execution for DEV Environment'){
       steps{
+        sh "sh returnStatus: true, script: 'terraform workspace new dev'"
         sh "terraform init"
+        sh "terraform fmt"
+        sh "terraform validate"
+        sh "terraform plan"
+      }
+    }
+    stage('terraform execution for QA Environment'){
+      steps{
+        sh "sh returnStatus: true, script: 'terraform workspace new qa'"
+        sh "terraform init"
+        sh "terraform fmt"
+        sh "terraform validate"
+        sh "terraform plan"
+      }
+    }
+    stage('terraform execution for Staging Environment'){
+      steps{
+        sh "sh returnStatus: true, script: 'terraform workspace new staging'"
+        sh "terraform init"
+        sh "terraform fmt"
+        sh "terraform validate"
+        sh "terraform plan"
       }
     }
   }
