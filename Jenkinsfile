@@ -16,8 +16,6 @@ pipeline{
     }
     stage('Terraform execution for DEV Environment'){
       steps{
-        sh "terraform init"        
-        sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform workspace select dev"
         sh "terraform init"
         sh "terraform plan -var-file=dev.tfvars"
