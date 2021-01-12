@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "pact-terraform-test"
+    bucket = "pact-terraform"
     key    = "pact-s3-buckets.tfstate"
     region = "us-west-2"
   }
