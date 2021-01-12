@@ -7,7 +7,6 @@ pipeline{
     stage('Cleaning Up'){
       steps{
         sh "rm -fR *terraform*"
-        sh "terraform init"
       }
     }
     stage('Approve To Deploy Into Dev Environment'){
@@ -17,6 +16,7 @@ pipeline{
     }
     stage('Terraform execution for DEV Environment'){
       steps{
+        sh "terraform init"        
         sh returnStatus: true, script: 'terraform workspace new dev'
         sh "terraform workspace select dev"
         sh "terraform init"
