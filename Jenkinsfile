@@ -7,6 +7,7 @@ pipeline{
     stage('Cleaning Up'){
       steps{
         sh "rm -fR *terraform*"
+        sh "terraform init"
       }
     }
     stage('Approve To Deploy Into Dev Environment'){
